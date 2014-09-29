@@ -1,82 +1,29 @@
-" Make things more friendly
-set nocompatible
-set scrolloff=2
-set nobackup
-set noswapfile
-set backspace=indent,eol,start
+" .vimrc
 
+set nocompatible                " Behave like Vim instead of Vi
+set scrolloff=2                 " Show some context
+set nobackup                    " Don't make a mess…
+set noswapfile                  " …even if there was a crash.
+set backspace=indent,eol,start  " Backspace can go anywhere
+set history=50		        " keep some history
+set ruler		        " show the cursor position
+set showcmd		        " display incomplete commands
+set incsearch		        " do incremental searching
+syntax on                       " Pretty colours…
+set hlsearch                    " Make things easy to see
 
-set history=50		" keep 50 lines of command line history
-set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
-set incsearch		" do incremental searching
-
-" Don't use Ex mode, use Q for formatting
-map Q gq
-
-" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
-" so that you can undo CTRL-U after inserting a line break.
-inoremap <C-U> <C-G>u<C-U>
-
-" Squeak squeak :3
 if has('mouse')
-    set mouse=a
+    set mouse=a                 " Squeak squeak :3
 endif
 
-" Pretty colours…
-if &t_Co > 2 || has("gui_running")
-  syntax on
-  set hlsearch
-endif
+filetype plugin indent on       " Language-dependant indenting
 
-" Only do this part when compiled with support for autocommands.
-if has("autocmd")
 
-  " Enable file type detection.
-  " Use the default filetype settings, so that mail gets 'tw' set to 72,
-  " 'cindent' is on in C files, etc.
-  " Also load indent files, to automatically do language-dependent indenting.
-  filetype plugin indent on
+set expandtab                   " Insert spaces instead of tabs
+set softtabstop=4               " The tab key represents four spaces
+set shiftwidth=4                " Indentation is also four spaces
 
-  " Put these in an autocmd group, so that we can delete them easily.
-  augroup vimrcEx
-  au!
-
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
-
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid or when inside an event handler
-  " (happens when dropping a file on gvim).
-  " Also don't do it when the mark is in the first line, that is the default
-  " position when opening a file.
-  autocmd BufReadPost *
-    \ if line("'\"") > 1 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
-
-  augroup END
-
-else
-
-  set autoindent		" always set autoindenting on
-
-endif " has("autocmd")
-
-" Convenient command to see the difference between the current buffer and the
-" file it was loaded from, thus the changes you made.
-" Only define it when not defined already.
-if !exists(":DiffOrig")
-  command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
-endif
-
-" Use four spaces instead of tab. Use four spaces for auto-indent.
-set et
-set sw=4
-set sts=4
-set smarttab
-
+" Cscope is handy for larger projects.
 function! LoadCscope()
     let db = findfile("cscope.out", ".;")
     if (!empty(db))
@@ -88,6 +35,7 @@ function! LoadCscope()
 endfunction
 au BufEnter /* call LoadCscope()
 
+" Make GVim look like regular Vim
 if has("gui_running")
   if has("gui_gtk2")
     set guifont=Terminus\ 9
