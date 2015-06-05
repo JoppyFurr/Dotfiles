@@ -8,6 +8,7 @@ autoload -Uz compinit
 compinit
 
 # Joppy-changes
+autoload -U zmv
 autoload -U colors && colors
 setopt prompt_subst
 

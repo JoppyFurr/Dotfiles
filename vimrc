@@ -83,3 +83,5 @@ if has("gui_running")
 
 endif
 
+filetype on
+au BufNewFile,BufRead *.rs set filetype=rust
