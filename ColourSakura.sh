@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Generate colour
 HUE=$[ $RANDOM % 3600 ]
