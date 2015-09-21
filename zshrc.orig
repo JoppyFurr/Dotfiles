@@ -12,8 +12,8 @@ autoload -U zmv
 autoload -U colors && colors
 setopt prompt_subst
 
-# Location of Git promt for Debian
-. /usr/lib/git-core/git-sh-prompt
+# This git location may not be standard.
+. /usr/share/git/git-prompt.sh
 
 # Make the zsh colour scheme match the terminal background :3
 if [ -n "$LC_COLOUR_THEME" ] ; then
