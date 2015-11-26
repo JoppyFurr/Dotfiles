@@ -18,10 +18,17 @@ endif
 
 filetype plugin indent on       " Language-dependant indenting
 
-
 set expandtab                   " Insert spaces instead of tabs
 set softtabstop=4               " The tab key represents four spaces
 set shiftwidth=4                " Indentation is also four spaces
+
+" Spell checking
+set spelllang=en_nz
+set spellfile=$HOME/.vim/spell/words.utf-8.add
+set spell
+
+" Whitespace errors
+let c_space_errors=1
 
 " Cscope is handy for larger projects.
 function! LoadCscope()
