@@ -5,6 +5,9 @@ set $mod Mod1
 # Favorite font :3
 font pango:Terminus 11px
 
+# No titlebars
+new_window pixel
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -132,12 +135,17 @@ bar {
 #        output HDMI-0
         font pango:Terminus 11px
         status_command i3status --config ~/.i3/i3status.conf
+    colors {
+        background #232323
+        statusline #DCDCDC
+    }
 }
 
 # Run on startup
 exec --no-startup-id redshift
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id dunst
+exec --no-startup-id compton -b
 
 # Keyboard settings for Poker II
 exec --no-startup-id setxkbmap -layout dvorak -option -option compose:ralt -option caps:escape
