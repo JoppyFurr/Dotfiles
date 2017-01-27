@@ -42,7 +42,41 @@ function! LoadCscope()
 endfunction
 au BufEnter /* call LoadCscope()
 
-" Make GVim look like regular Vim
+" Colour scheme
+
+colorscheme default
+hi SpecialKey      guifg=#D3D7CF
+hi NonText         guifg=#D3D7CF
+hi Directory       guifg=#3465A4
+hi ErrorMsg        guifg=#FFFFFF guibg=#CC0000
+hi Search          guifg=#000000 guibg=#C4A000
+hi MoreMsg         guifg=#8AE234
+hi LineNr          guifg=#C4A000
+hi Question        guifg=#8AE234
+hi Title           guifg=#AD7FA8
+hi WarningMsg      guifg=#EF2929
+hi WildMenu        guifg=#000000 guibg=#C4A000
+hi Folded          guifg=#06989A guibg=#2E3436
+hi FoldColumn      guifg=#06989A guibg=#2E3436
+hi SignColumn      guifg=#3465A4
+hi Pmenu                         guibg=#AD7FA8
+hi PmenuSel                      guibg=#2E3436
+hi PmenuSbar                     guibg=#2E3436
+hi TabLine         guifg=#EEEEEC guibg=#2E3436
+hi CursorColumn                  guibg=#2E3436
+hi Comment         guifg=#3465A4
+hi Constant        guifg=#CC0000
+hi Special         guifg=#EF2929
+hi Identifier      guifg=#06989A
+hi Statement       guifg=#C4A000
+hi PreProc         guifg=#75507B
+hi Type            guifg=#4E9A06
+hi Underlined      guifg=#729FCF
+hi Ignore          guifg=#2E3436
+hi Error           guifg=#FFFFFF guibg=#CC0000
+hi Todo            guifg=#000000 guibg=#C4A000
+
+" GVim settings
 if has("gui_running")
   if has("gui_gtk2")
     set guifont=Terminus\ 9
@@ -55,38 +89,8 @@ if has("gui_running")
     let background_colour="#101010"
   endif
 
-  colorscheme default
   exe "hi Normal guifg=#C0C0C0 guibg=".background_colour
-  hi SpecialKey      guifg=#D3D7CF
-  hi NonText         guifg=#D3D7CF
-  hi Directory       guifg=#3465A4
-  hi ErrorMsg        guifg=#FFFFFF guibg=#CC0000
-  hi Search          guifg=#000000 guibg=#C4A000
-  hi MoreMsg         guifg=#8AE234
-  hi LineNr          guifg=#C4A000
-  hi Question        guifg=#8AE234
-  hi Title           guifg=#AD7FA8
-  hi WarningMsg      guifg=#EF2929
-  hi WildMenu        guifg=#000000 guibg=#C4A000
-  hi Folded          guifg=#06989A guibg=#2E3436
-  hi FoldColumn      guifg=#06989A guibg=#2E3436
-  hi SignColumn      guifg=#3465A4
-  hi Pmenu                         guibg=#AD7FA8
-  hi PmenuSel                      guibg=#2E3436
-  hi PmenuSbar                     guibg=#2E3436
-  hi TabLine         guifg=#EEEEEC guibg=#2E3436
-  hi CursorColumn                  guibg=#2E3436
-  hi Comment         guifg=#3465A4
-  hi Constant        guifg=#CC0000
-  hi Special         guifg=#EF2929
-  hi Identifier      guifg=#06989A
-  hi Statement       guifg=#C4A000
-  hi PreProc         guifg=#75507B
-  hi Type            guifg=#4E9A06
-  hi Underlined      guifg=#729FCF
-  hi Ignore          guifg=#2E3436
-  hi Error           guifg=#FFFFFF guibg=#CC0000
-  hi Todo            guifg=#000000 guibg=#C4A000
+
 
 endif
 
