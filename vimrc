@@ -9,6 +9,8 @@ set history=50		        " keep some history
 set ruler		        " show the cursor position
 set showcmd		        " display incomplete commands
 set incsearch		        " do incremental searching
+set ignorecase                  " Case insensitive if search-string is all lowercase
+set smartcase                   " Case sensitive if search-string contains any uppercase
 syntax on                       " Pretty colours…
 set hlsearch                    " Make things easy to see
 
