@@ -1,7 +1,10 @@
 " .vimrc
-
 set nocompatible                " Behave like Vim instead of Vi
-set scrolloff=2                 " Show some context
+colorscheme default
+
+filetype plugin indent on       " Language-dependant indenting
+syntax on                       " Highlighting
+set scrolloff=5                 " Show some context
 set nobackup                    " Don't make a mess…
 set noswapfile                  " …even if there was a crash.
 set backspace=indent,eol,start  " Backspace can go anywhere
@@ -9,20 +12,17 @@ set history=50		        " keep some history
 set ruler		        " show the cursor position
 set showcmd		        " display incomplete commands
 set incsearch		        " do incremental searching
-set ignorecase                  " Case insensitive if search-string is all lowercase
-set smartcase                   " Case sensitive if search-string contains any uppercase
-syntax on                       " Pretty colours…
+set ignorecase                  " Case insensitive if search-string is all lower case
+set smartcase                   " Case sensitive if search-string contains any upper case
 set hlsearch                    " Make things easy to see
 
 if has('mouse')
     set mouse=a                 " Squeak squeak :3
 endif
 
-filetype plugin indent on       " Language-dependant indenting
-
 set expandtab                   " Insert spaces instead of tabs
-set softtabstop=4               " The tab key represents four spaces
-set shiftwidth=4                " Indentation is also four spaces
+set softtabstop=4               " Tabs are four spaces wide
+set shiftwidth=4                " Indentation is four spaces wide
 
 " Spell checking
 set spelllang=en_nz
@@ -31,6 +31,9 @@ set spell
 
 " Whitespace errors
 let c_space_errors=1
+
+" Use black for column rule
+highlight ColorColumn ctermbg=black
 
 " Cscope is handy for larger projects.
 function! LoadCscope()
@@ -44,9 +47,7 @@ function! LoadCscope()
 endfunction
 au BufEnter /* call LoadCscope()
 
-" Colour scheme
-
-colorscheme default
+" GUI Colour scheme
 hi SpecialKey      guifg=#D3D7CF
 hi NonText         guifg=#D3D7CF
 hi Directory       guifg=#3465A4
@@ -92,9 +93,19 @@ if has("gui_running")
   endif
 
   exe "hi Normal guifg=#C0C0C0 guibg=".background_colour
-
-
 endif
 
-filetype on
-au BufNewFile,BufRead *.rs set filetype=rust
+" File-specific configuration
+autocmd BufNewFile,BufRead Notes :source ~/Notes.vim
+
+autocmd BufNewFile,BufRead */linux/**
+    \ set noexpandtab   |
+    \ set softtabstop=8 |
+    \ set shiftwidth=8  |
+    \ set cc=80
+
+autocmd BufNewFile,BufRead */uboot/**
+    \ set noexpandtab   |
+    \ set softtabstop=8 |
+    \ set shiftwidth=8  |
+    \ set cc=80
