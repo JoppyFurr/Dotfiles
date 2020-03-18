@@ -6,6 +6,7 @@ filetype plugin indent on       " Language-dependant indenting
 colorscheme wombat
 syntax on                       " Highlighting
 hi Normal ctermbg=none
+hi LineNr ctermbg=none
 
 set scrolloff=5                 " Show some context
 set nobackup                    " Don't make a mess…
