@@ -1,9 +1,12 @@
 " .vimrc
 set nocompatible                " Behave like Vim instead of Vi
-colorscheme default
-
 filetype plugin indent on       " Language-dependant indenting
+
+" Theme
+colorscheme wombat
 syntax on                       " Highlighting
+hi Normal ctermbg=none
+
 set scrolloff=5                 " Show some context
 set nobackup                    " Don't make a mess…
 set noswapfile                  " …even if there was a crash.
@@ -47,52 +50,11 @@ function! LoadCscope()
 endfunction
 au BufEnter /* call LoadCscope()
 
-" GUI Colour scheme
-hi SpecialKey      guifg=#D3D7CF
-hi NonText         guifg=#D3D7CF
-hi Directory       guifg=#3465A4
-hi ErrorMsg        guifg=#FFFFFF guibg=#CC0000
-hi Search          guifg=#000000 guibg=#C4A000
-hi MoreMsg         guifg=#8AE234
-hi LineNr          guifg=#C4A000
-hi Question        guifg=#8AE234
-hi Title           guifg=#AD7FA8
-hi WarningMsg      guifg=#EF2929
-hi WildMenu        guifg=#000000 guibg=#C4A000
-hi Folded          guifg=#06989A guibg=#2E3436
-hi FoldColumn      guifg=#06989A guibg=#2E3436
-hi SignColumn      guifg=#3465A4
-hi Pmenu                         guibg=#AD7FA8
-hi PmenuSel                      guibg=#2E3436
-hi PmenuSbar                     guibg=#2E3436
-hi TabLine         guifg=#EEEEEC guibg=#2E3436
-hi CursorColumn                  guibg=#2E3436
-hi Comment         guifg=#3465A4
-hi Constant        guifg=#CC0000
-hi Special         guifg=#EF2929
-hi Identifier      guifg=#06989A
-hi Statement       guifg=#C4A000
-hi PreProc         guifg=#75507B
-hi Type            guifg=#4E9A06
-hi Underlined      guifg=#729FCF
-hi Ignore          guifg=#2E3436
-hi Error           guifg=#FFFFFF guibg=#CC0000
-hi Todo            guifg=#000000 guibg=#C4A000
-
 " GVim settings
 if has("gui_running")
-  if has("gui_gtk2")
-    set guifont=Terminus\ 9
-    set guioptions-=T " Hide toolpar
+    set guifont=Terminus\ 10
+    set guioptions-=T " Hide tool-bar
     set guioptions-=r " Hide scrollbar
-  endif
-
-  let background_colour=system("~/Scripts/ColourBg.sh")
-  if v:shell_error
-    let background_colour="#101010"
-  endif
-
-  exe "hi Normal guifg=#C0C0C0 guibg=".background_colour
 endif
 
 " File-specific configuration
@@ -109,3 +71,8 @@ autocmd BufNewFile,BufRead */uboot/**
     \ set softtabstop=8 |
     \ set shiftwidth=8  |
     \ set cc=80
+
+" For Lightline
+set noshowmode
+set laststatus=2
+let g:lightline = { 'colorscheme' : 'wombat' }
