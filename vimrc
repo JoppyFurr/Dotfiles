@@ -1,6 +1,7 @@
 " .vimrc
 set nocompatible                " Behave like Vim instead of Vi
 filetype plugin indent on       " Language-dependant indenting
+set encoding=utf-8
 
 " Theme
 colorscheme wombat
