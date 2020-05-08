@@ -18,6 +18,10 @@ echo "  │  Snepper Setup Script  │"
 echo "  ╰────────────────────────╯"
 echo
 
+#############################
+##  Package Configuration  ##
+#############################
+
 echo "Package Installation:"
 
 PACKAGES="
@@ -28,6 +32,7 @@ PACKAGES="
     keepassxc
     kpcli
     suckless-tools
+    telegram-desktop
     vim
     vim-gtk
     xfonts-terminus
@@ -45,17 +50,44 @@ do
 done
 echo
 
-# Vim
+#########################
+##  Vim Configuration  ##
+#########################
 echo "Vim Setup:"
 ln -s ${HOME}/Dotfiles/vimrc ${HOME}/.vimrc 2>/dev/null
 mkdir -p ${HOME}/.vim/colors
 mkdir -p ${HOME}/.vim/pack/plugins/start
 ln -s ${HOME}/Dotfiles/wombat.vim ${HOME}/.vim/colors/ 2>/dev/null
-echo "Install Vim Lightline with:"
-echo "  'git clone https://github.com/itchyny/lightline.vim ~/.vim/pack/plugins/start/lightline'"
-echo "Install VimWiki with:"
-echo "  'git clone https://github.com/vimwiki/vimwiki.git ~/.vim/pack/plugins/start/vimwiki'"
+
+if [ -e "${HOME}/.vim/pack/plugins/start/lightline/" ]
+then
+    echo " -> Lightline is already installed."
+else
+    echo "Install Vim Lightline with:"
+    echo "  'git clone https://github.com/itchyny/lightline.vim ~/.vim/pack/plugins/start/lightline'"
+fi
+
+if [ -e "$HOME/.vim/pack/plugins/start/vimwiki/" ]
+then
+    echo " -> VimWiki is already installed."
+else
+    echo "Install VimWiki with:"
+    echo "  'git clone https://github.com/vimwiki/vimwiki.git ~/.vim/pack/plugins/start/vimwiki'"
+fi
 echo
 
-# Zsh
+#########################
+##  Zsh Configuration  ##
+#########################
 ln -s ${HOME}/Dotfiles/zshrc ${HOME}/.zshrc 2>/dev/null
+
+#########################
+##  SSH Configuration  ##
+#########################
+echo "SSH Setup:"
+if [ -e "${HOME}/.ssh/id_ed25519" ]
+then
+    echo " -> Key already exists."
+else
+    ssh-keygen -t ed25519
+fi
