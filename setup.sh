@@ -23,7 +23,6 @@ echo
 #############################
 
 echo "Package Installation:"
-
 PACKAGES="
     build-essential
     curl
@@ -79,7 +78,16 @@ echo
 #########################
 ##  Zsh Configuration  ##
 #########################
+echo "Zsh Setup:"
 ln -s ${HOME}/Dotfiles/zshrc ${HOME}/.zshrc 2>/dev/null
+if [ "$(cat /etc/passwd | grep ^$(whoami) | cut -d : -f 7)" = "/usr/bin/zsh" ]
+then
+    echo " -> Zsh is already the login shell"
+else
+    echo "Enable Zsh with:"
+    echo "  'chsh --shell /usr/bin/zsh'"
+fi
+echo
 
 #########################
 ##  SSH Configuration  ##
@@ -91,3 +99,4 @@ then
 else
     ssh-keygen -t ed25519
 fi
+echo
