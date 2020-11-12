@@ -105,8 +105,17 @@ echo
 ##  Other Configuration  ##
 ###########################
 echo "Other configuration:"
+
 echo " -> XCompose"
 ln -s ${HOME}/Dotfiles/XCompose ${HOME}/.XCompose 2>/dev/null
+
+if [ "$(whoami)" = "joppy" ]
+then
+    echo " -> Git"
+    git config --global user.name "Joppy Furr"
+    git config --global user.email "joppyfurr@gmail.com"
+    git config --global init.defaultBranch main
+fi
 
 
 echo
