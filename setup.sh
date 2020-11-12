@@ -100,3 +100,15 @@ else
     ssh-keygen -t ed25519
 fi
 echo
+
+###########################
+##  Other Configuration  ##
+###########################
+echo "Other configuration:"
+echo " -> XCompose"
+ln -s ${HOME}/Dotfiles/XCompose ${HOME}/.XCompose 2>/dev/null
+
+
+echo
+echo "Done."
+echo
