@@ -54,7 +54,7 @@ au BufEnter /* call LoadCscope()
 
 " GVim settings
 if has("gui_running")
-    set guifont=Terminus\ 10
+    set guifont=Terminus\ (TTF)\ Medium\ 12
     set guioptions-=T " Hide tool-bar
     set guioptions-=r " Hide scrollbar
 endif
