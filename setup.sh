@@ -66,6 +66,14 @@ else
     echo "  'git clone https://github.com/itchyny/lightline.vim ~/.vim/pack/plugins/start/lightline'"
 fi
 
+if [ -e "${HOME}/.vim/pack/plugins/start/nerdtree/" ]
+then
+    echo " -> NERDTree is already installed."
+else
+    echo "Install NERDTree with:"
+    echo "  'git clone https://github.com/preservim/nerdtree.git ~/.vim/pack/plugins/start/nerdtree'"
+fi
+
 if [ -e "$HOME/.vim/pack/plugins/start/vimwiki/" ]
 then
     echo " -> VimWiki is already installed."
