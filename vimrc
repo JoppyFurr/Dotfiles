@@ -9,25 +9,35 @@ syntax on                       " Highlighting
 hi Normal ctermbg=none
 hi LineNr ctermbg=none
 
-set scrolloff=5                 " Show some context
-set nobackup                    " Don't make a mess…
-set noswapfile                  " …even if there was a crash.
+" Editor settings
 set backspace=indent,eol,start  " Backspace can go anywhere
-set history=50		        " keep some history
-set ruler		        " show the cursor position
-set showcmd		        " display incomplete commands
-set incsearch		        " do incremental searching
-set ignorecase                  " Case insensitive if search-string is all lower case
-set smartcase                   " Case sensitive if search-string contains any upper case
-set hlsearch                    " Make things easy to see
-
-if has('mouse')
-    set mouse=a                 " Squeak squeak :3
-endif
-
-set expandtab                   " Insert spaces instead of tabs
+set expandtab                   " Use spaces instead of tabs
 set softtabstop=4               " Tabs are four spaces wide
 set shiftwidth=4                " Indentation is four spaces wide
+set history=50
+set linebreak                   " Avoid wrapping in the middle of a word
+
+" File settings
+set nobackup
+set noswapfile
+set autoread                    " Re-read modified files if we've made no edits
+
+" Interface settings
+set ruler                       " Show the cursor position
+set scrolloff=5                 " Show context
+set sidescrolloff=5
+set showcmd                     " Display incomplete commands
+set tabpagemax=50               " Increase maximum number of tabs
+set title                       " Set the window title to the file being edited
+if has('mouse')
+    set mouse=a
+endif
+
+" Search settings
+set hlsearch                    " Highlight matches
+set incsearch                   " Incremental searching
+set ignorecase                  " Case insensitive with a lower-case search string
+set smartcase                   " Case sensitive with a mixed-case search string
 
 " Spell checking
 set spelllang=en_nz
