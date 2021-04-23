@@ -50,17 +50,11 @@ let c_space_errors=1
 " Use black for column rule
 highlight ColorColumn ctermbg=black
 
-" Cscope is handy for larger projects.
-function! LoadCscope()
-    let db = findfile("cscope.out", ".;")
-    if (!empty(db))
-        let path = strpart(db, 0, match(db, "/cscope.out$"))
-        set nocscopeverbose " suppress 'duplicate connection' error
-        exe "cs add " . db . " " . path
-        set cscopeverbose
-    endif
-endfunction
-au BufEnter /* call LoadCscope()
+" Support for ctags
+set tags=./tags;
+
+" NERDTree
+nnoremap <C-n> :NERDTreeToggle<CR>
 
 " GVim settings
 if has("gui_running")
