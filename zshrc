@@ -12,7 +12,7 @@ autoload -U zmv
 autoload -U colors && colors
 setopt prompt_subst
 
-# Location of Git promt for Debian
+# Location of Git prompt for Debian
 . /usr/lib/git-core/git-sh-prompt
 
 # Red is a snep colour :3

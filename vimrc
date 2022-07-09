@@ -58,7 +58,7 @@ nnoremap <C-n> :NERDTreeToggle<CR>
 
 " GVim settings
 if has("gui_running")
-    set guifont=Terminus\ (TTF)\ Medium\ 12
+    set guifont=Terminus\ Medium\ 12
     set guioptions-=T " Hide tool-bar
     set guioptions-=r " Hide scrollbar
 endif

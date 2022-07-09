@@ -22,32 +22,78 @@ echo
 ##  Package Configuration  ##
 #############################
 
-echo "Package Installation:"
-PACKAGES="
-    build-essential
-    curl
-    git
-    htop
-    keepassxc
-    kpcli
-    suckless-tools
-    telegram-desktop
-    vim
-    vim-gtk
-    xfonts-terminus
-    zsh"
+# TODO: kpcli lives in AUR
+install_packages_pacman ()
+{
+    echo "Package Installation:"
+    PACKAGES="
+        base-devel
+        curl
+        git
+        htop
+        keepassxc
+        dmenu
+        telegram-desktop
+        vim
+        gvim
+        terminus-font
+        zsh"
 
-for PACKAGE in ${PACKAGES}
-do
-    if dpkg -s ${PACKAGE} > /dev/null 2> /dev/null
-    then
-        echo " -> ${PACKAGE} is already installed."
-    else
-        echo " -> Installing ${PACKAGE}"
-        sudo apt-get install ${PACKAGE}
-    fi
-done
-echo
+    for PACKAGE in ${PACKAGES}
+    do
+        if pacman -Qi ${PACKAGE} > /dev/null 2> /dev/null
+        then
+            echo " -> ${PACKAGE} is already installed."
+        else
+            echo " -> Installing ${PACKAGE}"
+            sudo pacman -S ${PACKAGE}
+        fi
+    done
+    echo
+}
+
+install_packages_apt ()
+{
+    echo "Package Installation:"
+    PACKAGES="
+        build-essential
+        curl
+        git
+        htop
+        keepassxc
+        kpcli
+        suckless-tools
+        telegram-desktop
+        vim
+        vim-gtk
+        xfonts-terminus
+        zsh"
+
+    # base-devel for Arch, and pacman -Sy <package>
+
+    for PACKAGE in ${PACKAGES}
+    do
+        if dpkg -s ${PACKAGE} > /dev/null 2> /dev/null
+        then
+            echo " -> ${PACKAGE} is already installed."
+        else
+            echo " -> Installing ${PACKAGE}"
+            sudo apt-get install ${PACKAGE}
+        fi
+    done
+    echo
+}
+
+if uname -a | grep -i arch > /dev/null
+then
+    install_packages_pacman
+fi
+
+if uname -a | grep -i ubuntu > /dev/null
+then
+    install_packages_apt
+fi
+
 
 #########################
 ##  Vim Configuration  ##
@@ -124,7 +170,6 @@ then
     git config --global user.email "joppyfurr@gmail.com"
     git config --global init.defaultBranch main
 fi
-
 
 echo
 echo "Done."
