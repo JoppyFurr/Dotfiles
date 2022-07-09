@@ -29,13 +29,13 @@ install_packages_pacman ()
     PACKAGES="
         base-devel
         curl
+        dmenu
+        firefox
         git
+        gvim
         htop
         keepassxc
-        dmenu
         telegram-desktop
-        vim
-        gvim
         terminus-font
         zsh"
 
