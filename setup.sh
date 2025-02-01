@@ -29,6 +29,7 @@ install_packages_pacman ()
     PACKAGES="
         base-devel
         curl
+        fish
         dmenu
         firefox
         git
@@ -59,6 +60,7 @@ install_packages_apt ()
         build-essential
         curl
         git
+        fish
         htop
         keepassxc
         kpcli
@@ -128,6 +130,16 @@ else
     echo "  'git clone https://github.com/vimwiki/vimwiki.git ~/.vim/pack/plugins/start/vimwiki'"
 fi
 echo
+
+
+#########################
+##  Fish Configuration  ##
+#########################
+echo "Fish Setup:"
+mkdir -p ${HOME}/.config/fish
+ln -s ${HOME}/Dotfiles/fish/config.fish ${HOME}/.config/fish/config.fish 2>/dev/null
+ln -s ${HOME}/Dotfiles/fish/fish_variables ${HOME}/.config/fish/fish_variables 2>/dev/null
+
 
 #########################
 ##  Zsh Configuration  ##
