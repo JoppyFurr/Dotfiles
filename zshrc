@@ -24,6 +24,9 @@ then
     source /usr/lib/git-core/git-sh-prompt
 fi
 
+# Fix the Git pager
+export LESSCHARSET="utf-8"
+
 # Red is a snep colour :3
 COLOUR_THEME=red
 
