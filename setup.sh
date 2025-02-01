@@ -30,12 +30,13 @@ install_packages_pacman ()
         base-devel
         curl
         fish
-        dmenu
+        fuzzel
         firefox
         git
         gvim
         htop
         keepassxc
+        man-pages
         telegram-desktop
         terminus-font
         zsh"
@@ -70,8 +71,6 @@ install_packages_apt ()
         vim-gtk
         xfonts-terminus
         zsh"
-
-    # base-devel for Arch, and pacman -Sy <package>
 
     for PACKAGE in ${PACKAGES}
     do
@@ -185,4 +184,7 @@ fi
 
 echo
 echo "Done."
+echo
+
+echo "Remember to edit /etc/security/faillock.conf"
 echo
