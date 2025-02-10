@@ -37,8 +37,10 @@ install_packages_pacman ()
         htop
         keepassxc
         man-pages
+        neovim
         telegram-desktop
         terminus-font
+        wl-clipboard
         zsh"
 
     for PACKAGE in ${PACKAGES}
@@ -129,6 +131,13 @@ else
     echo "  'git clone https://github.com/vimwiki/vimwiki.git ~/.vim/pack/plugins/start/vimwiki'"
 fi
 echo
+
+############################
+##  Neovim Configuration  ##
+############################
+echo "Neovim Setup:"
+mkdir -p ${HOME}/.config/nvim
+ln -s ${HOME}/Dotfiles/nvim/init.lua ${HOME}/.config/nvim/init.lua 2>/dev/null
 
 
 #########################
