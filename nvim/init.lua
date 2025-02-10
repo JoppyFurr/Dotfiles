@@ -2,12 +2,11 @@
 -- Neovim configuration
 --
 -- TODO:
---   - LSP
+--   - Make LSP display in statusline look like Helix
 --   - Fix whitespace error hilighting
 --   - Consider removing italics from theme
 --   - Autocmd for Linux coding style
 --
-
 
 -- Vim editor options
 vim.opt.expandtab = true    -- Use spaces instead of tabs
@@ -37,6 +36,25 @@ vim.opt.title = true        -- Set the window title to the file being edited
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = "number"
 vim.g.c_space_errors = 1    -- Hilight space errors
+
+-- LSP Configuration
+vim.lsp.config('*', {
+    capabilities = {
+        textDocument = {
+            semanticTokens = { multilineTokenSupport = true }
+        }
+    },
+    root_markers = { '.git' },
+})
+
+vim.lsp.config ('clangd', {
+    cmd = { 'clangd' },
+    root_markers = { '.git', '.clangd', 'compile_flags.txt', 'compile_commands.json' },
+    filetypes = { 'c', 'cpp' }
+})
+vim.lsp.enable ('clangd')
+
+vim.diagnostic.config( { virtual_text = true } )
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
