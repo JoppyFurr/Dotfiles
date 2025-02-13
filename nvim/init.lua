@@ -104,7 +104,8 @@ require ('catppuccin').setup ({
 vim.cmd.colorscheme 'catppuccin-mocha'
 
 require'nvim-treesitter.configs'.setup {
-    ensure_installed = { 'c', 'fish', 'html', 'javascript', 'lua', 'rust', 'zig' },
+    ensure_installed = { 'bash', 'c', 'comment', 'cpp', 'fish', 'html', 'javascript',
+                         'lua', 'printf', 'python', 'rust', 'yaml', 'zig' },
     highlight = { enable = true}
 }
 
