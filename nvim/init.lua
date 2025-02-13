@@ -4,7 +4,6 @@
 -- TODO:
 --   - Make LSP display in statusline look like Helix
 --   - Fix whitespace error hilighting
---   - Consider removing italics from theme
 --   - Autocmd for Linux coding style
 --
 
@@ -96,10 +95,12 @@ require('lazy').setup({
     checker = { enabled = true },
 })
 
--- TODO: Remove italics
 -- TODO: C space errors currently only visibile when cursor is over them
 -- TODO: Can tree-sitter hilighting be made the same as helix?
 --       (Currently, nvim gives #define and #include as different colours)
+require ('catppuccin').setup ({
+    no_italic = true
+})
 vim.cmd.colorscheme 'catppuccin-mocha'
 
 require'nvim-treesitter.configs'.setup {
