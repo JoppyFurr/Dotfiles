@@ -3,7 +3,6 @@
 --
 -- TODO:
 --   - Make LSP display in statusline look like Helix
---   - Fix whitespace error hilighting
 --   - Autocmd for Linux coding style
 --
 
@@ -95,7 +94,6 @@ require('lazy').setup({
     checker = { enabled = true },
 })
 
--- TODO: C space errors currently only visibile when cursor is over them
 -- TODO: Can tree-sitter hilighting be made the same as helix?
 --       (Currently, nvim gives #define and #include as different colours)
 require ('catppuccin').setup ({
@@ -115,6 +113,9 @@ require ('mini.diff').setup ({
         signs = { add = '┃', change = '┃', delete = '┃' }
     }
 });
+
+-- Hilight whitespace at end of lines
+require ('mini.trailspace').setup ({})
 
 require ('mini.statusline').setup ({
    use_icons = false
@@ -146,4 +147,3 @@ end
 MiniStatusline.section_location = function (args)
     return '%l:%v'
 end
-
