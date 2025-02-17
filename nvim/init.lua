@@ -85,7 +85,8 @@ require('lazy').setup({
         -- add your plugins here
         { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
         { 'echasnovski/mini.nvim', version = false },
-	{ 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'}
+        { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'},
+        { 'nvim-telescope/telescope.nvim', tag = '0.1.8', dependencies = { 'nvim-lua/plenary.nvim' } }
     },
     -- Configure any other settings here. See the documentation for more details.
     -- colorscheme that will be used when installing plugins.
@@ -159,5 +160,7 @@ MiniStatusline.section_location = function (args)
 end
 
 -- Custom mappings
+local telescope_builtin = require ('telescope.builtin')
+vim.keymap.set ('n', '<leader>f', function () telescope_builtin.find_files ({ no_ignore = true }) end, { desc = "Telescope find files" })
 vim.keymap.set ('n', 'gn', ':bnext<cr>')
 vim.keymap.set ('n', 'gp', ':bprevious<cr>')
