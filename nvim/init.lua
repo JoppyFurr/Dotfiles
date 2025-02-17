@@ -94,19 +94,29 @@ require('lazy').setup({
     checker = { enabled = true },
 })
 
--- TODO: Can tree-sitter hilighting be made the same as helix?
---       (Currently, nvim gives #define and #include as different colours)
+-- Colourscheme
 require ('catppuccin').setup ({
     no_italic = true
 })
 vim.cmd.colorscheme 'catppuccin-mocha'
+local mocha = require ('catppuccin.palettes').get_palette "mocha"
 
+-- Tree-sitter
 require'nvim-treesitter.configs'.setup {
     ensure_installed = { 'bash', 'c', 'comment', 'cpp', 'fish', 'html', 'javascript',
                          'lua', 'printf', 'python', 'rust', 'yaml', 'zig' },
     highlight = { enable = true}
 }
 
+-- Tabline
+require ('mini.tabline').setup ({
+    show_icons = false,
+    tabpage_section = 'right'
+})
+vim.cmd.highlight ('MiniTablineFill', 'guibg=' .. mocha.mantle)
+vim.cmd.highlight ('MiniTablineCurrent', 'guisp=' .. mocha.mauve)
+
+-- Git-gutters
 require ('mini.diff').setup ({
     view = {
         style = 'sign',
@@ -147,3 +157,7 @@ end
 MiniStatusline.section_location = function (args)
     return '%l:%v'
 end
+
+-- Custom mappings
+vim.keymap.set ('n', 'gn', ':bnext<cr>')
+vim.keymap.set ('n', 'gp', ':bprevious<cr>')
