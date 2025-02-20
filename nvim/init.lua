@@ -24,6 +24,7 @@ vim.opt.smartcase = true    -- Case sensitive with a mixed-case search string
 -- Vim spell checking
 vim.opt.spelllang = 'en_nz'
 vim.opt.spellfile = vim.fn.expand ('~/.vim/spell/words.utf-8.add');
+vim.opt.spelloptions = "camel"
 vim.opt.spell = true
 
 -- Vim interface settings
