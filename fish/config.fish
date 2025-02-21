@@ -63,8 +63,9 @@ if status is-interactive
         echo -n -s (prompt_login) $normal (fish_vcs_prompt) $normal " "$prompt_status " " $suffix " "
     end
 
+    set -x fish_prompt_pwd_dir_length 0
     function fish_right_prompt
-        echo -n -s (set_color $fish_color_cwd) (prompt_pwd)
+        echo -n -s (set_color $fish_color_cwd) (prompt_pwd) "/ "
     end
 
     # Abbreviations
