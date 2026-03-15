@@ -72,6 +72,8 @@ if status is-interactive
     abbr --add gerp grep
     abbr --add sl ls
     abbr --add vi nvim
+    abbr --add fd fd -u
+    abbr --add rg rg -u
 
     # Environment fixes
     set -x LESSCHARSET "utf-8"
