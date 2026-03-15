@@ -63,6 +63,17 @@ if status is-interactive
         echo -n -s (prompt_login) $normal (fish_vcs_prompt) $normal " "$prompt_status " " $suffix " "
     end
 
+    function fish_should_add_to_history
+
+        # Don't store commands that start with a space
+        string match -qr '^\\s' -- $argv ; and return 1
+
+        # Don't store commands that contain escape characters that mess with the shell.
+        string match -qr '\x1b' -- $argv ; and return 1
+
+        return 0
+    end
+
     set -x fish_prompt_pwd_dir_length 0
     function fish_right_prompt
         echo -n -s (set_color $fish_color_cwd) (prompt_pwd) "/ "
@@ -74,6 +85,7 @@ if status is-interactive
     abbr --add vi nvim
     abbr --add fd fd -u
     abbr --add rg rg -u
+    abbr --add x2goclient QT_QPA_PLATFORM=xcb x2goclient
 
     # Environment fixes
     set -x LESSCHARSET "utf-8"
