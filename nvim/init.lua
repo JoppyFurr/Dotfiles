@@ -163,5 +163,7 @@ end
 -- Custom mappings
 local telescope_builtin = require ('telescope.builtin')
 vim.keymap.set ('n', '<leader>f', function () telescope_builtin.find_files ({ no_ignore = true }) end, { desc = "Telescope find files" })
+vim.keymap.set ('n', '<leader>g', function () telescope_builtin.grep_string ({ no_ignore = true }) end, { desc = "Telescope grep string" })
+vim.keymap.set ('n', '<leader>x', ':bd<cr>')
 vim.keymap.set ('n', 'gn', ':bnext<cr>')
 vim.keymap.set ('n', 'gp', ':bprevious<cr>')
